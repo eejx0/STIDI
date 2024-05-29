@@ -1,7 +1,7 @@
 import { Header } from "../components/Header";
 import styled from "styled-components";
 import Banner from "../assets/Banner.svg";
-import SpaceMan from "../assets/SpaceMan.svg";
+// import SpaceMan from "../assets/SpaceMan.svg";
 import { ContentBox } from "../components/Main/ContentBox";
 
 export const MainPage = () => {
@@ -77,12 +77,12 @@ const Text3 = styled.p`
     color: #555555;
 `;
 
-const ImgWrapper = styled.div`
-    position: relative;
-    height: calc(100vh - 165px - (17px + 56px));
-`;
+// const ImgWrapper = styled.div`
+//     position: relative;
+//     height: calc(100vh - 165px - (17px + 56px));
+// `;
 
-const SpaceManImg = styled.img`
-    position: absolute;
-    bottom: 0;
-`;
+// const SpaceManImg = styled.img`
+//     position: absolute;
+//     bottom: 0;
+// `;
