@@ -1,14 +1,15 @@
 import { Header } from "../components/Header";
 import styled from "styled-components";
-import Banner from "../assets/Banner.svg";
-// import SpaceMan from "../assets/SpaceMan.svg";
+import Banner from "../components/Main/Banner";
 import { ContentBox } from "../components/Main/ContentBox";
 
 export const MainPage = () => {
     return (
         <>
             <Header />
-            <BannerImg src={Banner} alt="" />
+            <BannerWrapper>
+                <Banner />
+            </BannerWrapper>
             <MainWrapper>
                 <TextWrapper>
                     <TitleWrapper>
@@ -32,10 +33,8 @@ export const MainPage = () => {
     );
 };
 
-const BannerImg = styled.img`
-    width: 100%;
-    height: 165px;
-    margin-top: calc(17px + 56px);
+const BannerWrapper = styled.div`
+    margin-top: calc(56px + 17px);
 `;
 
 const MainWrapper = styled.div`
