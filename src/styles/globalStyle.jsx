@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-family: "Pretendard";
         user-select: none;
+        text-decoration: none;
         ::-webkit-scrollbar {
             width: 0px;
         }

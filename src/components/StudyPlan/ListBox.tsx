@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ListBox = () => {
     return (
-        <Wrapper>
-            <Content>테스트</Content>
-            <Date>2024.05.29</Date>
-        </Wrapper>
+        <Link to={"/studyPlan/detail"}>
+            <Wrapper>
+                <Content>테스트</Content>
+                <Date>2024.05.29</Date>
+            </Wrapper>
+        </Link>
+        // 나중에 navigate로 바꿔야할듯
     );
 };
 
@@ -28,6 +32,7 @@ const Content = styled.p`
     font-weight: 500;
     font-size: 20px;
     flex-grow: 1;
+    color: black;
 `;
 
 const Date = styled.p`

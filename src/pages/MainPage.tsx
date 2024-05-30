@@ -6,7 +6,7 @@ import { ContentBox } from "../components/Main/ContentBox";
 
 export const MainPage = () => {
     return (
-        <Wrapper>
+        <>
             <Header />
             <BannerImg src={Banner} alt="" />
             <MainWrapper>
@@ -28,14 +28,9 @@ export const MainPage = () => {
                 </ImgWrapper> */}
                 <ContentBox />
             </MainWrapper>
-        </Wrapper>
+        </>
     );
 };
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
 
 const BannerImg = styled.img`
     width: 100%;
