@@ -31,7 +31,7 @@ export const Banner: React.FC<BannerProps> = () => {
     useEffect(() => {
         let interval: NodeJS.Timeout | null = null;
         if (autoSlide) {
-            interval = setInterval(goToNextBanner, 3000);
+            interval = setInterval(goToNextBanner, 2000);
         }
         return () => {
             if (interval) {
@@ -101,6 +101,11 @@ const ButtonWrap = styled.div<{ left?: boolean; right?: boolean }>`
     z-index: 1;
     ${({ left }) => left && `left: 150px;`}
     ${({ right }) => right && `right: 150px;`}
+
+    &:hover {
+        transition: 0.2s;
+        background-color: #e6e6e6;
+    }
 
     @media (max-width: 1200px) {
         width: 40px;

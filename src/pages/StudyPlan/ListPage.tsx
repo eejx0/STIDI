@@ -26,11 +26,11 @@ export const StudyPlanListPage = () => {
                     <ListBox />
                 </ListWrapper>
             </div>
-            <WriteButton>
-                <Link to={"/studyPlan/write"}>
+            <Link to={"/studyPlan/write"}>
+                <WriteButton>
                     <img src={Plus} alt="" />
-                </Link>
-            </WriteButton>
+                </WriteButton>
+            </Link>
         </Wrapper>
     );
 };

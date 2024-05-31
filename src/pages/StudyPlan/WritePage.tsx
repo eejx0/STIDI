@@ -49,11 +49,11 @@ export const StudyPlanWritePage: React.FC = () => {
                     </InputWrapper>
                 ))}
             </TodoWrapper>
-            <WriteButton>
-                <Link to={"/studyPlan"}>
+            <Link to={"/studyPlan"}>
+                <WriteButton>
                     <img src={Right} alt="" />
-                </Link>
-            </WriteButton>
+                </WriteButton>
+            </Link>
         </Wrapper>
     );
 };
