@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import Banner1 from "../../assets/Banner.svg";
+import Banner2 from "../../assets/Banner2.svg";
 import LeftButton from "../../assets/LeftButton.svg";
 import RightButton from "../../assets/RightButton.svg";
 
-interface BannerProps {}
+const banners = [Banner1, Banner2, Banner1];
 
-const banners = [Banner1, Banner1, Banner1];
-
-export const Banner: React.FC<BannerProps> = () => {
+export const Banner = () => {
     const [currentBanner, setCurrentBanner] = useState(1);
     const [autoSlide, setAutoSlide] = useState(true);
 
+    // 만약 인덱스가 0일 때 그 전의 배너로 가야할 때 -1을 하면 음수가 됨
+    // 근데 맨 마지막으로 이동해야하기 때문에 지금 상황처럼 배너가 3개 있다면
+    // 인덱스가 2인곳으로 이동해야 함
     const goToPreviousBanner = () => {
         setCurrentBanner((currentBanner - 1 + banners.length) % banners.length);
     };
 
-    const goToNextBanner = () => {
+    const goToNextBanner = useCallback(() => {
         setCurrentBanner((currentBanner + 1) % banners.length);
-    };
+    }, [currentBanner]);
 
     const startAutoSlide = () => {
         setAutoSlide(true);
@@ -28,6 +30,7 @@ export const Banner: React.FC<BannerProps> = () => {
         setAutoSlide(false);
     };
 
+    // autoSlide와 goToNextBanner 값이 변경될 때마다 useEffect 실행
     useEffect(() => {
         let interval: NodeJS.Timeout | null = null;
         if (autoSlide) {

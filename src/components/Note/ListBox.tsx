@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const StudyPlanListBox = () => {
+export const NoteListBox = () => {
     return (
-        <Link to={"/studyPlan/detail"}>
+        <Link to={"/note/detail"}>
             <Wrapper>
                 <Content>테스트</Content>
                 <Date>2024.05.29</Date>

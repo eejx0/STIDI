@@ -1,34 +1,31 @@
 import styled from "styled-components";
 import { Header } from "../../components/Header";
-import { StudyPlanListBox } from "../../components/StudyPlan/ListBox";
+import { NoteListBox } from "../../components/Note/ListBox";
 import Plus from "../../assets/Plus.svg";
 import { Link } from "react-router-dom";
 
-export const StudyPlanListPage = () => {
+export const NoteListPage = () => {
     return (
         <Wrapper>
             <Header />
             <div>
                 <TextWrapper>
                     <Text1>웹에서 간단히 하는</Text1>
-                    <Text2>스터디 플랜 📚</Text2>
+                    <Text2>노트 필기 ✍🏻</Text2>
                 </TextWrapper>
                 <ListWrapper>
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
+                    <NoteListBox />
+                    <NoteListBox />
+                    <NoteListBox />
+                    <NoteListBox />
+                    <NoteListBox />
+                    <NoteListBox />
+                    <NoteListBox />
+                    <NoteListBox />
+                    <NoteListBox />
                 </ListWrapper>
             </div>
-            <Link to={"/studyPlan/write"}>
+            <Link to={"/note/write"}>
                 <WriteButton>
                     <img src={Plus} alt="" />
                 </WriteButton>

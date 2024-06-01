@@ -3,7 +3,8 @@ import { MainPage } from "../pages/MainPage";
 import { StudyPlanListPage } from "../pages/StudyPlan/ListPage";
 import { StudyPlanDetailPage } from "../pages/StudyPlan/DetailPage";
 import { StudyPlanWritePage } from "../pages/StudyPlan/WritePage";
-import Banner from "../components/Main/Banner";
+import { NoteListPage } from "../pages/Note/ListPage";
+import { NoteWritePage } from "../pages/Note/WritePage";
 
 export const Router = () => {
     return (
@@ -13,7 +14,8 @@ export const Router = () => {
                 <Route path="/studyPlan" element={<StudyPlanListPage />} />
                 <Route path="/studyPlan/detail" element={<StudyPlanDetailPage />} />
                 <Route path="/studyPlan/write" element={<StudyPlanWritePage />} />
-                <Route path="/banner" element={<Banner />} />
+                <Route path="/note" element={<NoteListPage />} />
+                <Route path="/note/write" element={<NoteWritePage />} />
             </Routes>
         </BrowserRouter>
     );

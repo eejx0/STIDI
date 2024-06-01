@@ -13,12 +13,12 @@ export const StudyPlanWritePage: React.FC = () => {
     const [inputWraps, setInputWraps] = useState<InputWrapProps[]>([{ key: 0 }]);
     const [nextKey, setNextKey] = useState(1);
 
-    const addInputWrap = (): void => {
+    const addInputWrap = () => {
         setInputWraps((prevInputWraps) => [...prevInputWraps, { key: nextKey }]);
         setNextKey((prevKey) => prevKey + 1);
     };
 
-    const deleteInputWrap = (key: number): void => {
+    const deleteInputWrap = (key: number) => {
         setInputWraps((prevInputWraps) => prevInputWraps.filter((inputWrap) => inputWrap.key !== key));
     };
 

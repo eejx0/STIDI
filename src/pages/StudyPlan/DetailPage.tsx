@@ -7,23 +7,17 @@ import { useState } from "react";
 export const StudyPlanDetailPage: React.FC = () => {
     const [todos, setTodos] = useState([
         { id: 1, subject: "수학", task: "교과서 19p ~ 20p 복습하기" },
-        {
-            id: 2,
-            subject: "국어",
-            task: "교과서 19p ~ 20p 복습하기",
-        },
+        { id: 2, subject: "국어", task: "교과서 19p ~ 20p 복습하기" },
         { id: 3, subject: "사회", task: "교과서 19p ~ 20p 복습하기" },
         { id: 4, subject: "과학", task: "교과서 19p ~ 20p 복습하기" },
-        {
-            id: 5,
-            subject: "데프",
-            task: "교과서 19p ~ 20p 복습하기",
-        },
+        { id: 5, subject: "데이터베이스프로그래밍", task: "교과서 19p ~ 20p 복습하기" },
         { id: 6, subject: "운영체제", task: "교과서 19p ~ 20p 복습하기" },
         { id: 7, subject: "역사", task: "교과서 19p ~ 20p 복습하기" },
         { id: 8, subject: "문학", task: "교과서 19p ~ 20p 복습하기" },
     ]);
 
+    // 삭제한 id가 없는 배열을 새로 띄워주는 형식
+    // todos라는 새로운 배열을 만들어서 id와 맞지 않은 값을 띄워줌
     const handleDelete = (id: number) => {
         setTodos(todos.filter((todo) => todo.id !== id));
     };
@@ -50,9 +44,9 @@ export const StudyPlanDetailPage: React.FC = () => {
                                     <td>
                                         <SubjectName>{todo.subject}</SubjectName>
                                     </td>
-                                    <td>
+                                    <Td>
                                         <TodoThing>{todo.task}</TodoThing>
-                                    </td>
+                                    </Td>
                                     <td>
                                         <img
                                             src={Delete}
@@ -139,22 +133,20 @@ const TableWrapper = styled.div`
 const Table = styled.table`
     width: 100%;
     border-collapse: collapse;
-    /* text-align: left; */
+    text-align: left;
 
-    th,
     td {
         padding: 16px;
         border-bottom: 1px solid #dddddd;
-    }
-
-    th {
-        background-color: #f2f2f2;
-        font-size: 18px;
-    }
-
-    td {
         font-size: 17px;
     }
+`;
+
+const Td = styled.td`
+    padding: 16px;
+    border-bottom: 1px solid #dddddd;
+    font-size: 17px;
+    width: 70%;
 `;
 
 const CheckBox = styled.input.attrs({ type: "checkbox" })`
@@ -194,15 +186,11 @@ const CheckBox = styled.input.attrs({ type: "checkbox" })`
 const SubjectName = styled.p`
     font-size: 20px;
     font-weight: 700;
-    margin-left: 17px;
+    /* margin-left: 17px; */
 `;
 
 const TodoThing = styled.p`
     font-size: 17px;
     font-weight: 500;
-    margin-left: 47px;
-`;
-
-const DeleteIcon = styled.img`
-    cursor: pointer;
+    /* margin-left: 47px; */
 `;
