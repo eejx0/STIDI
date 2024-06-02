@@ -42,8 +42,8 @@ export const NoteWritePage: React.FC = () => {
         const range = selection.getRangeAt(0);
         // 선택된 범위의 공통 조상 컨테이너를 가져옴
         // 공식문서에 공통 조상 컨테이너라고 적혀있어서 뭘까 하고 찾아보니까
-        // 만약 <p>This is <b>some</b> text.</p> 이런 코드가 있다고 치면
-        // some text를 선택했을 때 두 텍스트 노드의 가장 가까운 조상은 p 태그임
+        // 만약 <p>세븐틴은 <b>진짜</b> 잘생겼다.</p> 이런 코드가 있다고 치면
+        // 진짜 잘생겼다를 선택했을 때 두 텍스트 노드의 가장 가까운 조상은 p 태그임
         // 따라서 선택된 텍스트 범위의 시작과 끝을 모두 포함하는 가장 낮은 공통 조상 노드를 찾아 스타일을 적용하기 위해 사용
         const commonAncestorContainer = range.commonAncestorContainer;
 

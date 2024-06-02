@@ -4,6 +4,7 @@ import { StudyPlanListPage } from "../pages/StudyPlan/ListPage";
 import { StudyPlanDetailPage } from "../pages/StudyPlan/DetailPage";
 import { StudyPlanWritePage } from "../pages/StudyPlan/WritePage";
 import { NoteListPage } from "../pages/Note/ListPage";
+import { NoteDetailPage } from "../pages/Note/DetailPage";
 import { NoteWritePage } from "../pages/Note/WritePage";
 
 export const Router = () => {
@@ -15,6 +16,7 @@ export const Router = () => {
                 <Route path="/studyPlan/detail" element={<StudyPlanDetailPage />} />
                 <Route path="/studyPlan/write" element={<StudyPlanWritePage />} />
                 <Route path="/note" element={<NoteListPage />} />
+                <Route path="/note/detail" element={<NoteDetailPage />} />
                 <Route path="/note/write" element={<NoteWritePage />} />
             </Routes>
         </BrowserRouter>
