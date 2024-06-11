@@ -2,6 +2,7 @@ import { Header } from "../components/Header";
 import styled from "styled-components";
 import Banner from "../components/Main/Banner";
 import { ContentBox } from "../components/Main/ContentBox";
+import School from "../assets/School.svg";
 
 export const MainPage = () => {
     return (
@@ -23,10 +24,8 @@ export const MainPage = () => {
                         <Text3>STIDI로 공부를 더 체계적이고</Text3>
                         <Text3>편안하게 해보세요</Text3>
                     </div>
+                    <SchoolImg src={School}></SchoolImg>
                 </TextWrapper>
-                {/* <ImgWrapper>
-                    <SpaceManImg src={SpaceMan} alt="" />
-                </ImgWrapper> */}
                 <ContentBox />
             </MainWrapper>
         </>
@@ -71,12 +70,7 @@ const Text3 = styled.p`
     color: #555555;
 `;
 
-// const ImgWrapper = styled.div`
-//     position: relative;
-//     height: calc(100vh - 165px - (17px + 56px));
-// `;
-
-// const SpaceManImg = styled.img`
-//     position: absolute;
-//     bottom: 0;
-// `;
+const SchoolImg = styled.img`
+    width: 500px;
+    height: 320px;
+`;

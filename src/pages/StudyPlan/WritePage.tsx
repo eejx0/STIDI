@@ -1,17 +1,38 @@
 import { Header } from "../../components/Header";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Delete from "../../assets/Delete.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Right from "../../assets/Right.svg";
 
 interface InputWrapProps {
     key: number;
+    subject?: string;
+    todo?: string;
 }
 
 export const StudyPlanWritePage: React.FC = () => {
     const [inputWraps, setInputWraps] = useState<InputWrapProps[]>([{ key: 0 }]);
     const [nextKey, setNextKey] = useState(1);
+    const [textBoxValue, setTextBoxValue] = useState("");
+    const [, setCurrentDate] = useState("");
+    const [, setListDate] = useState("");
+    const navigate = useNavigate();
+
+    const formatDate = (date: Date): string => {
+        const yyyy = date.getFullYear();
+        const mm = String(date.getMonth() + 1).padStart(2, "0");
+        const dd = String(date.getDate()).padStart(2, "0");
+        return `${yyyy}.${mm}.${dd}`;
+    };
+
+    useEffect(() => {
+        const today = new Date();
+        const formattedDate = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 📆`;
+        const formattedListDate = formatDate(today);
+        setCurrentDate(formattedDate);
+        setListDate(formattedListDate);
+    }, []);
 
     const addInputWrap = () => {
         setInputWraps((prevInputWraps) => [...prevInputWraps, { key: nextKey }]);
@@ -22,15 +43,47 @@ export const StudyPlanWritePage: React.FC = () => {
         setInputWraps((prevInputWraps) => prevInputWraps.filter((inputWrap) => inputWrap.key !== key));
     };
 
+    const handleInputChange = (key: number, field: "subject" | "todo", value: string) => {
+        setInputWraps((prevInputWraps) =>
+            prevInputWraps.map((inputWrap) => (inputWrap.key === key ? { ...inputWrap, [field]: value } : inputWrap))
+        );
+    };
+
+    const saveToLocalStorage = () => {
+        const today = new Date();
+        const displayDate = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 📅`;
+        const listDate = formatDate(today);
+
+        const newPlan = {
+            displayDate,
+            listDate,
+            textBoxValue,
+            inputWraps,
+        };
+
+        const storedPlans = localStorage.getItem("studyPlans");
+        const studyPlans = storedPlans ? JSON.parse(storedPlans) : [];
+        studyPlans.push(newPlan);
+        localStorage.setItem("studyPlans", JSON.stringify(studyPlans));
+
+        navigate("/studyPlan");
+    };
+
     return (
         <Wrapper>
             <Header />
             <ContentWrapper>
                 <FirstBox>
-                    <Date>2024년 5월 29일 📆</Date>
+                    <TextDate>
+                        {new Date().toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })} 📅
+                    </TextDate>
                     <LetterBox>
                         <Text>나에게 적는 한마디</Text>
-                        <TextBox placeholder="ex) 오늘도 화이팅!"></TextBox>
+                        <TextBox
+                            value={textBoxValue}
+                            onChange={(e) => setTextBoxValue(e.target.value)}
+                            placeholder="ex) 오늘도 화이팅!"
+                        ></TextBox>
                     </LetterBox>
                 </FirstBox>
                 <AddButton onClick={addInputWrap}>할 일 추가</AddButton>
@@ -38,8 +91,16 @@ export const StudyPlanWritePage: React.FC = () => {
             <TodoWrapper>
                 {inputWraps.map((inputWrap) => (
                     <InputWrapper key={inputWrap.key}>
-                        <SubjectInput placeholder="과목"></SubjectInput>
-                        <TodoInput placeholder="할 일을 입력해주세요"></TodoInput>
+                        <SubjectInput
+                            value={inputWrap.subject || ""}
+                            onChange={(e) => handleInputChange(inputWrap.key, "subject", e.target.value)}
+                            placeholder="과목"
+                        ></SubjectInput>
+                        <TodoInput
+                            value={inputWrap.todo || ""}
+                            onChange={(e) => handleInputChange(inputWrap.key, "todo", e.target.value)}
+                            placeholder="할 일을 입력해주세요"
+                        ></TodoInput>
                         <img
                             src={Delete}
                             alt="delete"
@@ -49,11 +110,9 @@ export const StudyPlanWritePage: React.FC = () => {
                     </InputWrapper>
                 ))}
             </TodoWrapper>
-            <Link to={"/studyPlan"}>
-                <WriteButton>
-                    <img src={Right} alt="" />
-                </WriteButton>
-            </Link>
+            <WriteButton onClick={saveToLocalStorage}>
+                <img src={Right} alt="" />
+            </WriteButton>
         </Wrapper>
     );
 };
@@ -92,7 +151,7 @@ const FirstBox = styled.div`
     flex-direction: column;
 `;
 
-const Date = styled.p`
+const TextDate = styled.p`
     margin-top: calc(56px + 68px);
     font-size: 38px;
     font-weight: 700;

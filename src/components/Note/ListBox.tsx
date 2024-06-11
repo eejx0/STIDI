@@ -9,7 +9,6 @@ export const NoteListBox = () => {
                 <Date>2024.05.29</Date>
             </Wrapper>
         </Link>
-        // 나중에 navigate로 바꿔야할듯
     );
 };
 

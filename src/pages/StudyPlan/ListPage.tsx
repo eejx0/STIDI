@@ -15,17 +15,6 @@ export const StudyPlanListPage = () => {
                 </TextWrapper>
                 <ListWrapper>
                     <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
-                    <StudyPlanListBox />
                 </ListWrapper>
             </div>
             <Link to={"/studyPlan/write"}>
